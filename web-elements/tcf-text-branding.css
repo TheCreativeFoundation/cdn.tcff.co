@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:700');
+
+.tcf-text-logo {
+    letter-spacing: -0.2em;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+}
+
+.tcf-text-logo .red {
+    color: #ff0000;
+}
+
+.tcf-text-logo .purple {
+    color: #9600ff;
+}
+
+.tcf-text-logo .teal {
+    color: #85ffe1;
+}
+
+.tcf-text-logo .green {
+    color: #00a31b;
+}
+
+.tcf-text-logo .light-blue {
+    color: #00f0ff;
+}
+
+.tcf-text-logo .yellow {
+    color: #ffb400;
+}
+
+.tcf-text-logo .light-purple {
+    color: #e13eff;
+}
+
+.tcf-text-logo .dark-pink {
+    color: #ff0090;
+} 
+
+.tcf-text-logo .light-purple-blue {
+    color: #696dff;
+}
+
+.tcf-text-logo .bright-pink {
+    color: #fd51ff;
+}
+
+.tcf-text-logo .light-green {
+    color: #00ff3c;
+}
+
+.tcf-text-logo .pink {
+    color: #ff00e4;
+}
+
+.tcf-text-logo .mint-green {
+    color: #00ffb4;
+}

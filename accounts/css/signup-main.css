@@ -1,0 +1,414 @@
+body {
+    margin: 0;
+}
+
+#body {
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.exterior {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.hidden {
+    display: none;
+}
+
+.center {
+    text-align: center;
+}
+
+.left-align {
+    text-align: left;
+}
+
+.roboto {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.label {
+    padding: 0px;
+    padding-top: 10px;
+    margin: 0px;
+    margin-bottom: 5px;
+}
+
+.name-form div {
+    width: 50%;
+    float: left;
+} 
+
+.name-form div input {
+    text-align: left;
+    float: left;
+}
+
+.tcf {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+}
+
+.tcf #t {
+    color: #ff0000;
+}
+
+.tcf #c {
+    color: #00f0ff;
+}
+
+.tcf #f {
+    color: #ffb400;
+}
+
+.small-spacer {
+    padding-top: 50px;
+}
+
+#application {
+    width: 60%;
+    background-color: white;
+    margin: 0 auto;
+    padding-top: 45px;
+    padding-bottom: 25px;  
+}
+
+#application-form {
+    padding-left: 75px;
+    padding-right: 75px;
+}
+
+#signup-button {
+    margin: 0 auto;
+    color: white;
+    width: 45%;
+    height: 47px;
+    line-height: 15px;
+    border: none;
+    text-decoration: none;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+    outline: none;
+    margin-top: 20px;
+}
+
+#textInputs input {
+    width: 100%;
+    border: none; 
+    border-bottom: 1px black solid;
+    padding-bottom: 5px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+#textInputs input:focus {
+    outline: none;
+    color: rgb(62, 139, 255);
+    border-color: rgb(62, 139, 255);
+}
+
+.name-form #first input {
+    width: 95%;
+}
+
+#termsOfService {
+    margin: 0;
+    padding: 0;
+    margin-top: 10px;
+}
+
+label {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    font-size: 12px;
+}
+
+a {
+    text-decoration: none;    
+}
+
+h2 {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2px;
+    padding-bottom: 4px;
+    margin: 0px;
+    font-size: 28px;
+}
+
+h1 {
+    padding-top: 0px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 45px;
+}
+
+@media (max-width: 890px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    #application-form {
+        padding-left: 50px;
+        padding-right: 50px;
+    }    
+}
+
+@media (max-width: 760px) {
+    h1 {
+        font-size: 36px;
+    }
+
+    #application {
+        width: 65%;
+    }
+    
+    #signup-button {
+        width: 220px;
+        height: 45px;
+        line-height: 14px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 610px) {
+    h1 {
+        font-size: 32px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    #application {
+        width: 70%;
+    }
+
+    #application-form {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+
+    #signup-button {
+        width: 210px;
+        height: 42px;
+        line-height: 13px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 500px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    #application {
+        width: 75%;
+    }
+
+    #application-form {
+        padding-right: 35px;
+        padding-left: 35px;
+    }
+
+    #signup-button {
+        width: 200px;
+        height: 40px;
+        line-height: 12px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 440px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    #application {
+        width: 80%;
+    }
+
+    #application-form {
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+
+    #signup-button {
+        width: 175px;
+        height: 37px;
+        line-height: 11px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 390px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 10px;
+    }
+
+    label {
+        font-size: 10px;
+    }
+
+    #application {
+        width: 80%;
+    }
+
+    #application-form {
+        padding-right: 25px;
+        padding-left:25px;
+    }
+
+    #signup-button {
+        width: 160px;
+        height: 35px;
+        line-height: 10px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 325px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 12px;
+    }
+
+    #application {
+        margin-top: 10%;
+        width: 80%;
+    }
+
+    #application-form {
+        padding-right: 25px;
+        padding-left:25px;
+    }
+
+    #signup-button {
+        width: 150px;
+        height: 33px;
+        line-height: 10px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 310px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 12px;
+    }
+
+    #application {
+        margin-top: 15%;
+        width: 85%;
+    }
+}
+
+@media (max-width: 265px) {
+    h1 {
+        font-size: 18px;
+    }
+
+    h2 {
+        font-size: 10px;
+    }
+
+    p {
+        font-size: 8px;
+    }
+
+    label {
+        font-size: 8px;
+    }
+
+    h4 {
+        font-size: 8px;
+    }
+
+    #application {
+        margin-top: 15%;
+    }
+
+    #application-form {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    #signup-button {
+        width: 125px;
+        height: 30px;
+        line-height: 8px;
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 210px) {
+    h1 {
+        font-size: 14px;
+    }
+
+    p {
+        font-size: 6px;
+    }
+
+    label {
+        font-size: 6px;
+    }
+
+    input {
+        font-size: 8px;
+    }
+
+    #application {
+        width: 85%;
+    }
+
+    .label {
+        padding: 0px;
+        padding-top: 5px;
+        margin: 0px;
+        margin-bottom: 0px;
+    }
+
+    .small-spacer {
+        padding-top: 30px;
+    }
+}
