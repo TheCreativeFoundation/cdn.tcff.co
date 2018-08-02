@@ -8,5 +8,4 @@ deploy:
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: "cdn.tcff.co"
   skip_cleanup: true
-  region: "us-east-2"
   acl: public_read 
