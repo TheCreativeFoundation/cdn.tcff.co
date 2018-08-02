@@ -1,0 +1,26 @@
+{
+  "name": "cdn.tcff.co",
+  "version": "1.0.0",
+  "description": "a CDN to store and deliver all static files for The Creative Foundation",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheCreativeFoundation/cdn.tcff.co.git"
+  },
+  "keywords": [
+    "cdn",
+    "static",
+    "website",
+    "s3",
+    "aws"
+  ],
+  "author": "guppythegod",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/TheCreativeFoundation/cdn.tcff.co/issues"
+  },
+  "homepage": "https://github.com/TheCreativeFoundation/cdn.tcff.co#readme"
+}
