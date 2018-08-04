@@ -7,7 +7,9 @@ const randomNumberTwo = (randomNumberOne === 3) ? randomNumberOne - 1 : randomNu
 $("body").css("background-color",colors[randomNumberOne]);
 $(".btn").css("background-color",colors[randomNumberOne]);
 
-$(".btn").attr("href", continueUrl);
+$(".btn").click(function(){
+    window.location.href = continueUrl;
+});
 
 console.log(continueUrl);
 console.log(firebase.auth().currentUser);
