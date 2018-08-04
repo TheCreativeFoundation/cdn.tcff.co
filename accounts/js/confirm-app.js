@@ -3,6 +3,8 @@ const randomNumberOne = Math.floor(Math.random() * 4);
 const randomNumberTwo = (randomNumberOne === 3) ? randomNumberOne - 1 : randomNumberOne + 1;
 const callback = getParameterByName("callback_uri");
 
+const db = firebase.firestore();
+
 $("body").css("background-color",colors[randomNumberOne]);
 $(".btn").css("background-color",colors[randomNumberOne]);
 
@@ -20,26 +22,39 @@ $("#no-btn").click(function(){
 $("#yes-btn").click(function(){
     console.log("the yes button was clicked");
     const tcfUser = firebase.auth().currentUser;
-    tcfUser.getIdToken(true).then(function (token) {
+    tcfUser.getIdToken(true).then(function(token) {
         $.post("/verifytoken", {
             token: token
         }, function (data) {
             if (data.statusCode === 202 && data.isValid) {
-                const userData = {
-                    email: tcfUser.email,
-                    username: tcfUser.username !== undefined ? tcfUser.username : null,
-                    photoUrl: tcfUser.photoUrl !== undefined ? tcfUser.photoUrl : null,
-                    displayName: tcfUser.displayName !== undefined ? tcfUser.displayName : null,
-                    uid: tcfUser.uid
-                }
-                $.post("/createuserhash", userData, function(data){                   
-                    if (data.statusCode === 202) {
-                        const fullCallback = callback+"?user="+data.userData;
-                        window.location.href = fullCallback;
+                db.collection("accounts").doc(tcfUser.uid).get().then(function(doc){
+                    if (doc.exists) {
+                        const userData = {
+                            token: token,
+                            email: tcfUser.email,
+                            username: tcfUser.displayName,
+                            photoUrl: doc.photoUrl,
+                            firstName: doc.firstName,
+                            lastName: doc.lastName,
+                            uid: tcfUser.uid
+                        };
+                        console.log(userData);
+                        $.post("/createuserhash", userData, function(data){                   
+                            if (data.statusCode === 202) {
+                                const fullCallback = callback+"?user="+data.userData;
+                                window.location.href = fullCallback;
+                            } else {
+                                console.log(data.message);
+                                window.location.href = "/error";
+                            }
+                        });
                     } else {
-                        console.log(data.message);
-                        window.location.href = "/erro";
+                        console.log("no document for user was found");
+                        window.location.href = "/error";
                     }
+                }).catch(function(error){
+                    console.log(error.message);
+                    window.location.href = "/error";
                 });
             } else {
                 console.log(data.message);

@@ -14,6 +14,7 @@ const callback = getParameterByName("callback_uri");
 body.style.backgroundColor = colors[randomNumberOne];
 signupButton.style.backgroundColor = colors[randomNumberOne];
 
+const db = firebase.firestore();
 
 $("#haveAccountLink a").css("color",colors[randomNumberTwo]);
 $("#haveAccountLink a").attr("href","/signin?callback_uri="+callback);
@@ -142,25 +143,39 @@ $(signupButton).click(function() {
                 if (document.getElementById("termsOfService-input").checked) {
                     const auth = firebase.auth();
                     auth.createUserWithEmailAndPassword(email, pass).then(function(){
-                        auth.currentUser.updateProfile({
-                            displayName: username,
-                            photoURL: "https://dkzr60oh8z476.cloudfront.net/dpi-mature-jojo.png"
-                        }).then(function(){
-                            const state = {
-                                url: "https://accounts.tcff.co/signin/confirm?callback_uri="+callback,
-                                handleCodeInApp: false
-                            };
-                            console.log(state);
-                            auth.currentUser.sendEmailVerification(state).then(function(){
-                                console.log("email verification email sent correctly");
-                                showSuccess();
+                        db.collection("accounts").doc(auth.currentUser.uid).set({
+                            firstName: firstName,
+                            lastName: lastName,
+                            agreedToTerms: true,
+                            username: username,
+                            email: email,
+                            photoUrl: "https://cdn.tcff.co/jojo-mature.png"
+                        }).then(function(ref){
+                            console.log(ref);
+                            auth.currentUser.updateProfile({
+                                displayName: username,
+                                photoURL: "https://cdn.tcff.co/jojo-mature.png"
+                            }).then(function(){
+                                const state = {
+                                    url: "https://accounts.tcff.co/signin/confirm?callback_uri="+callback,
+                                    handleCodeInApp: false
+                                };
+                                console.log(state);
+                                auth.currentUser.sendEmailVerification(state).then(function(){
+                                    console.log("email verification email sent correctly");
+                                    showSuccess();
+                                }).catch(function(error){
+                                    console.log(error);
+                                    deleteUser();
+                                    showError();
+                                });
                             }).catch(function(error){
                                 console.log(error);
                                 deleteUser();
                                 showError();
                             });
                         }).catch(function(error){
-                            console.log(error);
+                            console.log(error.message);
                             deleteUser();
                             showError();
                         });
