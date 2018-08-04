@@ -15,6 +15,7 @@ $("#no-btn").click(function(){
         window.location.href = "/signin?callback="+callback;
     }).catch(function(error){
         console.log("signout not successful");
+        console.log(error);
         window.location.href = "/error";
     });
 });
