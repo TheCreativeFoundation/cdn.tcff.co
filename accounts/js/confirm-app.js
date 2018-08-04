@@ -21,8 +21,7 @@ $("#no-btn").click(function(){
 
 $("#yes-btn").click(function(){
     console.log("the yes button was clicked");
-    const tcfUser = firebase.auth().currentUser;
-    tcfUser.getIdToken(true).then(function(token) {
+    firebase.auth().currentUser.getIdToken(true).then(function(token) {
         $.post("/createtoken", {token:token}, function(data){                   
             if (data.statusCode === 202) {
                 window.location.href = callback+"?token="+data.token;
