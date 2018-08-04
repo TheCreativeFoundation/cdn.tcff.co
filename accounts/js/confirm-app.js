@@ -23,40 +23,9 @@ $("#yes-btn").click(function(){
     console.log("the yes button was clicked");
     const tcfUser = firebase.auth().currentUser;
     tcfUser.getIdToken(true).then(function(token) {
-        $.post("/verifytoken", {
-            token: token
-        }, function (data) {
-            if (data.statusCode === 202 && data.isValid) {
-                db.collection("accounts").doc(tcfUser.uid).get().then(function(doc){
-                    if (doc.exists) {
-                        const data = doc.data();
-                        const userData = {
-                            token: token,
-                            email: tcfUser.email,
-                            username: tcfUser.displayName,
-                            photoUrl: data.photoUrl,
-                            firstName: data.firstName,
-                            lastName: data.lastName,
-                            uid: tcfUser.uid
-                        };
-                        console.log(userData);
-                        $.post("/createuserhash", userData, function(data){                   
-                            if (data.statusCode === 202) {
-                                const fullCallback = callback+"?user="+data.userData;
-                                window.location.href = fullCallback;
-                            } else {
-                                console.log(data.message);
-                                window.location.href = "/error";
-                            }
-                        });
-                    } else {
-                        console.log("no document for user was found");
-                        window.location.href = "/error";
-                    }
-                }).catch(function(error){
-                    console.log(error.message);
-                    window.location.href = "/error";
-                });
+        $.post("/create-user-token", {token:token}, function(data){                   
+            if (data.statusCode === 202) {
+                window.location.href = callback+"?token="+data.token;
             } else {
                 console.log(data.message);
                 window.location.href = "/error";

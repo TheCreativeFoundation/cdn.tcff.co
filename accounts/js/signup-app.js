@@ -149,7 +149,8 @@ $(signupButton).click(function() {
                             agreedToTerms: true,
                             username: username,
                             email: email,
-                            photoUrl: "https://cdn.tcff.co/jojo-mature.png"
+                            photoUrl: "https://cdn.tcff.co/jojo-mature.png",
+                            permissions:{tcfUser:true}
                         }).then(function(ref){
                             console.log(ref);
                             auth.currentUser.updateProfile({
