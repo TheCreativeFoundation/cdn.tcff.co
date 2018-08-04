@@ -7,6 +7,8 @@ const randomNumberTwo = (randomNumberOne === 3) ? randomNumberOne - 1 : randomNu
 $("body").css("background-color",colors[randomNumberOne]);
 $(".btn").css("background-color",colors[randomNumberOne]);
 
+$(".btn").attr("href", continueUrl);
+
 console.log(continueUrl);
 console.log(firebase.auth().currentUser);
 function showSuccess() {
@@ -30,42 +32,10 @@ firebase.auth().onAuthStateChanged(function(tcfUser){
         console.log(tcfUser);
         firebase.auth().applyActionCode(code).then(function(resp){
             console.log("verifying user worked");
-            firebase.auth().currentUser.getIdToken(true).then(function(token){
-                $.post("/verifytoken",{token:token},function(data){
-                    if (data.statusCode == 202 && data.isValid) {
-                        console.log("verifytoken worked");
-                        const userData = {
-                            email: tcfUser.email,
-                            username: tcfUser.username !== undefined ? tcfUser.username : null,
-                            photoUrl: tcfUser.photoUrl !== undefined ? tcfUser.photoUrl : null,
-                            displayName: tcfUser.displayName !== undefined ? tcfUser.displayName : null,
-                            uid: tcfUser.uid
-                        };
-                        console.log(userData);
-                        console.log(userData);
-                        $.post("/createuserhash", userData, function(data){
-                            console.log(data.userData);
-                            if (data.statusCode == 202) {
-                                document.querySelector("button").addEventListener('click', function(){
-                                    window.location.href = continueUrl; 
-                                });
-                                showSuccess();
-                            } else {
-                                console.log(data.message);
-                                showError();
-                            }
-                        });
-                    } else {
-                        console.log(data.message);
-                        showError();
-                    }
-                });
-            }).catch(function(error){
-                console.log("getIdToken threw error: "+error);
-            });
             showSuccess();
         }).catch(function(error){
             console.log("verifying user did not work");
+            console.log(error.message);
             showError();
         });
     }
