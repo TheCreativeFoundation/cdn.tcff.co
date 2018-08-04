@@ -29,13 +29,14 @@ $("#yes-btn").click(function(){
             if (data.statusCode === 202 && data.isValid) {
                 db.collection("accounts").doc(tcfUser.uid).get().then(function(doc){
                     if (doc.exists) {
+                        const data = doc.data();
                         const userData = {
                             token: token,
                             email: tcfUser.email,
                             username: tcfUser.displayName,
-                            photoUrl: doc.photoUrl,
-                            firstName: doc.firstName,
-                            lastName: doc.lastName,
+                            photoUrl: data.photoUrl,
+                            firstName: data.firstName,
+                            lastName: data.lastName,
                             uid: tcfUser.uid
                         };
                         console.log(userData);
