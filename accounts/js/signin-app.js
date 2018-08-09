@@ -51,10 +51,12 @@ $(signinButton).click(function(){
         if (email === ""){
             $(emailLabel).css("color","#FF7676");
             $(emailInput).css("border-bottom","1px #FF7676 solid");
+            $("button").css("opacity","1");
         }
         if (pass === ""){
             $(passLabel).css("color","#FF7676");
             $(passInput).css("border-bottom","1px #FF7676 solid");
+            $("button").css("opacity","1");
         }
     }
     else {
@@ -70,16 +72,18 @@ $(signinButton).click(function(){
                 emailLabel.textContent = "Couldn't find your TCF Account";
                 $(emailLabel).css("color","#FF7676");
                 $(emailInput).css("border-bottom","1px #FF7676 solid");
+                $("button").css("opacity","1");
             } else if (error.code === "auth/wrong-password"){
                 passLabel.textContent = "Your password was incorrect";
                 $(passLabel).css("color","#FF7676");
                 $(passInput).css("border-bottom","1px #FF7676 solid");
+                $("button").css("opacity","1");
             } else if (error.code === "auth/invalid-email"){
                 emailLabel.textContent = "Invalid email";
                 $(emailLabel).css("color","#FF7676");
                 $(emailInput).css("border-bottom","1px #FF7676 solid");
+                $("button").css("opacity","1");
             }
-
         });
     }
 });
