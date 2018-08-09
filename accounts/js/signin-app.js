@@ -61,7 +61,7 @@ $(signinButton).click(function(){
         console.log("all fields have inputs");
         const auth = firebase.auth();
         console.log("auth var made");
-        const promise = auth.signInWithEmailAndPassword(email, pass).then(function(){
+        auth.signInWithEmailAndPassword(email, pass).then(function(){
             console.log("signin was successfull");
             window.location.href = "/signin/confirm?callback_uri="+callback;
         }).catch(function(error){
@@ -70,12 +70,16 @@ $(signinButton).click(function(){
                 emailLabel.textContent = "Couldn't find your TCF Account";
                 $(emailLabel).css("color","#FF7676");
                 $(emailInput).css("border-bottom","1px #FF7676 solid");
-            }
-            else if (error.code === "auth/wrong-password"){
+            } else if (error.code === "auth/wrong-password"){
                 passLabel.textContent = "Your password was incorrect";
                 $(passLabel).css("color","#FF7676");
                 $(passInput).css("border-bottom","1px #FF7676 solid");
+            } else if (error.code === "auth/invalid-email"){
+                emailLabel.textContent = "Invalid email";
+                $(emailLabel).css("color","#FF7676");
+                $(emailInput).css("border-bottom","1px #FF7676 solid");
             }
+
         });
     }
 });
