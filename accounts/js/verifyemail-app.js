@@ -35,7 +35,7 @@ firebase.auth().onAuthStateChanged(function(tcfUser){
         firebase.auth().applyActionCode(code).then(function(resp){
             console.log("verifying user worked");
             firebase.auth().currentUser.getIdToken().then(function(token){
-                $.post("/email/newUser", {token:token}, function(data){
+                $.post("/email/newuser", {token:token}, function(data){
                     if (data.statusCode === 202) {
                         console.log("email sent correctly");
                         showSuccess();

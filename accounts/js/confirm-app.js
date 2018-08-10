@@ -25,7 +25,7 @@ $("#yes-btn").click(function(){
     firebase.auth().currentUser.getIdToken(true).then(function(token) {
         $.post("/createtoken", {token:token}, function(data){                   
             if (data.statusCode === 202) {
-                $.post("/email/onConfirm", {token:token}, function(data){
+                $.post("/email/onconfirm", {token:token}, function(data){
                     if (data.statusCode === 202) {
                         window.location.href = callback+"?token="+data.token;
                     } else {
