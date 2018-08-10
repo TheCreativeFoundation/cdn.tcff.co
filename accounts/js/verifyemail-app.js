@@ -34,7 +34,20 @@ firebase.auth().onAuthStateChanged(function(tcfUser){
         console.log(tcfUser);
         firebase.auth().applyActionCode(code).then(function(resp){
             console.log("verifying user worked");
-            showSuccess();
+            firebase.auth().currentUser.getIdToken().then(function(token){
+                $.post("/email/newUser", {token:token}, function(data){
+                    if (data.statusCode === 202) {
+                        console.log("email sent correctly");
+                        showSuccess();
+                    } else {
+                        console.log("email failed to send");
+                        console.log(data.message);
+                        showError();
+                    }
+                });
+            }).catch(function(error){
+                console.log(error);
+            });
         }).catch(function(error){
             console.log("verifying user did not work");
             console.log(error.message);
