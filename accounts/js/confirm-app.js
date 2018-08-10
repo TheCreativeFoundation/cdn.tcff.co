@@ -22,14 +22,15 @@ $("#no-btn").click(function(){
 
 $("#yes-btn").click(function(){
     console.log("the yes button was clicked");
-    firebase.auth().currentUser.getIdToken(true).then(function(token) {
+    firebase.auth().currentUser.getIdToken().then(function(token) {
         $.post("/createtoken", {token:token}, function(data){                   
             if (data.statusCode === 202) {
-                $.post("/email/onconfirm", {token:token}, function(data){
-                    if (data.statusCode === 202) {
-                        window.location.href = callback+"?token="+data.token;
+                const customToken = data.token;
+                $.post("/email/onconfirm", {token:token}, function(data2){
+                    if (data2.statusCode === 202) {
+                        window.location.href = callback+"?token="+customToken;
                     } else {
-                        console.log(data.message);
+                        console.log(data2.message);
                         window.location.href = "/error";
                     }
                 });
