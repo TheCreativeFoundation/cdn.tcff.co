@@ -78,7 +78,21 @@ $("#confirm-btn").click(function(){
                 firebase.auth().verifyPasswordResetCode(code).then(function(){
                     firebase.auth().confirmPasswordReset(code, pass).then(function(){
                         console.log("password reset was successful");
-                        showSuccess();
+                        firebase.auth().currentUser.getIdToken().then(function(token){
+                            $.post("/email/passwordreset", {token:token}, function(data){
+                                if (data.statusCode === 202) {
+                                    showSuccess();
+                                } else {
+                                    console.log("sending email failed");
+                                    console.log(error);
+                                    showError();
+                                }
+                            });
+                        }).catch(function(error){
+                            console.log("retrieving token failed");
+                            console.log(error);
+                            showError();
+                        });
                     }).catch(function(error){
                         console.log("password reset was successful");
                         console.log(error);
