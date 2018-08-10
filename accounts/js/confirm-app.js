@@ -25,7 +25,14 @@ $("#yes-btn").click(function(){
     firebase.auth().currentUser.getIdToken(true).then(function(token) {
         $.post("/createtoken", {token:token}, function(data){                   
             if (data.statusCode === 202) {
-                window.location.href = callback+"?token="+data.token;
+                $.post("/email/onConfirm", {token:token}, function(data){
+                    if (data.statusCode === 202) {
+                        window.location.href = callback+"?token="+data.token;
+                    } else {
+                        console.log(data.message);
+                        window.location.href = "/error";
+                    }
+                });
             } else {
                 console.log(data.message);
                 window.location.href = "/error";
