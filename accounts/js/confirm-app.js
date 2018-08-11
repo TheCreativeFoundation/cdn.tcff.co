@@ -12,7 +12,7 @@ $("#no-btn").click(function(){
     console.log("the no button was clicked");
     firebase.auth().signOut().then(function(){
         console.log("sign out successful");
-        window.location.href = "/signin?callback="+callback;
+        window.location.href = "/signin?callback_uri="+callback;
     }).catch(function(error){
         console.log("signout not successful");
         console.log(error);
