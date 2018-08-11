@@ -1,7 +1,6 @@
 const colors = ["#00f0ff","#fd51ff","#ff0000","#ffb400"];
 const randomNumberOne = Math.floor(Math.random() * 4);
 const randomNumberTwo = (randomNumberOne === 3) ? randomNumberOne - 1 : randomNumberOne + 1;
-const callback = getParameterByName("callback_uri");
 
 const db = firebase.firestore();
 
