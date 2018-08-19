@@ -22,7 +22,7 @@ $("#email-input").focusout(function(){
     $("#email-label").css("color","black");
 });
 
-function showSuccess(){
+const showSuccess = () => {
     $("#application-form").hide();
     $("button").hide();
     $("h4").hide();
@@ -36,12 +36,12 @@ $("#confirm-btn").click(function(){
     if (email === "") {
         $("#email-input").css("border-bottom","1px #FF7676 solid");
         $("#email-label").css("color","#FF7676");
+        resetButton();
     } else {
         const state = {
-            url: "http://localhost:5000/v1/signin?callback="+callback,
+            url: "http://accounts.tcff.co/signin?callback="+callback,
             handleCodeInApp: false
         }
-
         firebase.auth().sendPasswordResetEmail(email, state).then(function() {
             console.log("reset password sent successfully");
             showSuccess();
@@ -55,9 +55,8 @@ $("#confirm-btn").click(function(){
                 $("#email-label").text("No TCF Account is associated with this email");
                 $("#email-input").css("border-bottom", "1px #FF7676 solid");
                 $("#email-label").css("color", "#FF7676");
-            } else {
-                
             }
+            resetButton();
         });
     }
 });

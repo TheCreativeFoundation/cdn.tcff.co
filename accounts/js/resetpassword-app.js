@@ -49,6 +49,7 @@ function showError() {
     $("#initial-header").hide();
     $("#confirm-btn").hide();
     $("#error-header").show();
+    resetButton();
 }
 
 $("#continue-btn").click(function(){
@@ -72,6 +73,7 @@ $("#confirm-btn").click(function(){
                 $("#passAgain-label").css("color","#FF7676");
                 $(passAgainInput).css("border-bottom","1px #FF7676 solid");
             }
+            resetButton();
         } else {
             if (pass === passAgain) {
                 console.log("passwords match");
@@ -79,7 +81,7 @@ $("#confirm-btn").click(function(){
                     firebase.auth().confirmPasswordReset(code, pass).then(function(){
                         console.log("password reset was successful");
                         firebase.auth().currentUser.getIdToken().then(function(token){
-                            $.post("/email/passwordreset", {token:token}, function(data){
+                            $.post("/api/email/passwordreset", {token:token}, function(data){
                                 if (data.statusCode === 202) {
                                     showSuccess();
                                 } else {
@@ -110,6 +112,7 @@ $("#confirm-btn").click(function(){
                 $(passAgainInput).css("border-bottom","1px #FF7676 solid");
                 $("#pass-label").css("color","#FF7676");
                 $(passInput).css("border-bottom","1px #FF7676 solid");
+                resetButton();
             }
         }
     } else {
@@ -119,5 +122,6 @@ $("#confirm-btn").click(function(){
         $(passAgainInput).css("border-bottom","1px #FF7676 solid");
         $("#pass-label").css("color","#FF7676");
         $(passInput).css("border-bottom","1px #FF7676 solid");
+        resetButton();
     }
 });

@@ -137,6 +137,7 @@ $(signupButton).click(function() {
             $(lastNameInput).css("border-bottom", "1px #FF7676 solid");
             $("#lastName-label").css("color", "#FF7676");
         }
+        resetButton();
     } else {
         if (pass.length >= 8) {
             if (pass === passAgain) {
@@ -194,10 +195,12 @@ $(signupButton).click(function() {
                             console.log(error.code);
                             window.location.href = "/error";
                         }
+                        resetButton();
                     });
                 } else {
                     $("#termsOfService-label").css("color", "#FF7676");
                     $("#termsOfService-label a").css("color", "#FF7676");
+                    resetButton();
                 }
             } else {
                 $("#passAgain-label").text("Passwords don't match");
@@ -205,6 +208,7 @@ $(signupButton).click(function() {
                 $("#pass-label").css("color","#FF7676");
                 $(passInput).css("border-bottom","1px #FF7676 solid");
                 $(passAgainInput).css("border-bottom","1px #FF7676 solid");
+                resetButton();
             }
         } else {
             $("#pass-label").text("Password should be at least 8 characters long");
@@ -212,6 +216,7 @@ $(signupButton).click(function() {
             $("#pass-label").css("color","#FF7676");
             $(passInput).css("border-bottom","1px #FF7676 solid");
             $(passAgainInput).css("border-bottom","1px #FF7676 solid");
+            resetButton();
         }
     }
 });

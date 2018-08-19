@@ -1,4 +1,4 @@
-var config = {
+const config = {
     apiKey: "AIzaSyClVwGc5lhfOxCX1q514chFf2QjFyxXr90",
     authDomain: "tcff-accounts.firebaseapp.com",
     databaseURL: "https://tcff-accounts.firebaseio.com",
@@ -9,7 +9,7 @@ var config = {
 
 firebase.initializeApp(config);
 
-function getParameterByName(name, url) {
+const getParameterByName = (name, url) => {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, '\\$&');
     var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
@@ -17,4 +17,9 @@ function getParameterByName(name, url) {
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+const resetButton = () => {
+    $("button").attr("disabled", false);
+    $("button").css("opacity", "1");
 }
