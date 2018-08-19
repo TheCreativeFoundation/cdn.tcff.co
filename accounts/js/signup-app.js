@@ -144,8 +144,7 @@ $(signupButton).click(function() {
                 if (document.getElementById("termsOfService-input").checked) {
                     const auth = firebase.auth();
                     auth.createUserWithEmailAndPassword(email, pass).then(function(){
-                        console.log(auth.currentUser);
-                        db.collection("accounts").doc(auth.currentUser.uid).set({
+                        db.collection(auth.currentUser.uid).doc("global").set({
                             firstName: firstName,
                             lastName: lastName,
                             agreedToTerms: true,
