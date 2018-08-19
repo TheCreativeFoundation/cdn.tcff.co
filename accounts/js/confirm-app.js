@@ -55,7 +55,7 @@ $("#yes-btn").click(() => {
             type: 'POST',
             url: '/api/createtoken',
             contentType: 'application/json',
-            data: JSON.stringify({token: token});
+            data: JSON.stringify({token: token}),
             success: (data) => {
                 console.log(data.message);
                 if (data.statusCode === 202) {
