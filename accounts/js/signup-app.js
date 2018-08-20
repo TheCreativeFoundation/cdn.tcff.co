@@ -19,65 +19,70 @@ const db = firebase.firestore();
 $("#haveAccountLink a").css("color",colors[randomNumberTwo]);
 $("#haveAccountLink a").attr("href","/signin?callback_uri="+callback);
 
-$(emailInput).focus(function(){
+$("input[type='text']").focus(function(){
     $("#email-label").css("color","rgb(62, 139, 255)");
     $(this).css("border-bottom","2px rgb(62, 139, 255) solid");
 });
 
-$(emailInput).focusout(function(){
-    $("#email-label").css("color","black");
-    $(this).css("border-bottom","1px black solid");
-});
+// $(emailInput).focus(function(){
+//     $("#email-label").css("color","rgb(62, 139, 255)");
+//     $(this).css("border-bottom","2px rgb(62, 139, 255) solid");
+// });
 
-$(passInput).focus(function(){
-    $("#pass-label").css("color","rgb(62, 139, 255)");
-    $(this).css("border-bottom","2px rgb(62, 139, 255) solid");
-});
+// $(emailInput).focusout(function(){
+//     $("#email-label").css("color","black");
+//     $(this).css("border-bottom","1px black solid");
+// });
 
-$(passInput).focusout(function(){
-    $("#pass-label").css("color","black");
-    $(this).css("border-bottom","1px black solid");
-});
+// $(passInput).focus(function(){
+//     $("#pass-label").css("color","rgb(62, 139, 255)");
+//     $(this).css("border-bottom","2px rgb(62, 139, 255) solid");
+// });
 
-$(passAgainInput).focus(function(){
-    $("#passAgain-label").css("color","rgb(62, 139, 255)");
-    $(this).css("border-bottom","2px rgb(62, 139, 255) solid");
-});
+// $(passInput).focusout(function(){
+//     $("#pass-label").css("color","black");
+//     $(this).css("border-bottom","1px black solid");
+// });
 
-$(passAgainInput).focusout(function(){
-    $("#passAgain-label").css("color","black");
-    $(this).css("border-bottom","1px black solid");
-});
+// $(passAgainInput).focus(function(){
+//     $("#passAgain-label").css("color","rgb(62, 139, 255)");
+//     $(this).css("border-bottom","2px rgb(62, 139, 255) solid");
+// });
 
-$(usernameInput).focus(function(){
-    $("#username-label").css("color","rgb(62, 139, 255)");
-    $(this).css("border-bottom","2px rgb(62, 139, 255) solid");
-});
+// $(passAgainInput).focusout(function(){
+//     $("#passAgain-label").css("color","black");
+//     $(this).css("border-bottom","1px black solid");
+// });
 
-$(usernameInput).focusout(function(){
-    $("#username-label").css("color","black");
-    $(this).css("border-bottom","1px black solid");
-});
+// $(usernameInput).focus(function(){
+//     $("#username-label").css("color","rgb(62, 139, 255)");
+//     $(this).css("border-bottom","2px rgb(62, 139, 255) solid");
+// });
 
-$(firstNameInput).focus(function(){
-    $("#firstName-label").css("color","rgb(62, 139, 255)");
-    $(this).css("border-bottom","2px rgb(62, 139, 255) solid");
-});
+// $(usernameInput).focusout(function(){
+//     $("#username-label").css("color","black");
+//     $(this).css("border-bottom","1px black solid");
+// });
 
-$(firstNameInput).focusout(function(){
-    $("#firstName-label").css("color","black");
-    $(this).css("border-bottom","1px black solid");
-});
+// $(firstNameInput).focus(function(){
+//     $("#firstName-label").css("color","rgb(62, 139, 255)");
+//     $(this).css("border-bottom","2px rgb(62, 139, 255) solid");
+// });
 
-$(lastNameInput).focus(function(){
-    $("#lastName-label").css("color","rgb(62, 139, 255)");
-    $(this).css("border-bottom","2px rgb(62, 139, 255) solid");
-});
+// $(firstNameInput).focusout(function(){
+//     $("#firstName-label").css("color","black");
+//     $(this).css("border-bottom","1px black solid");
+// });
 
-$(lastNameInput).focusout(function(){
-    $("#lastName-label").css("color","black");
-    $(this).css("border-bottom","1px black solid");
-});
+// $(lastNameInput).focus(function(){
+//     $("#lastName-label").css("color","rgb(62, 139, 255)");
+//     $(this).css("border-bottom","2px rgb(62, 139, 255) solid");
+// });
+
+// $(lastNameInput).focusout(function(){
+//     $("#lastName-label").css("color","black");
+//     $(this).css("border-bottom","1px black solid");
+// });
 
 function showSuccess(){
     $("#application-form").hide();
