@@ -18,7 +18,7 @@ $("#createAccountLink a").attr("href","/signup?callback_uri="+callback);
 
 $("a").css("color",colors[randomNumberTwo]);
 
-$("#service").textContent(service);
+document.getElementById("service").textContent = service;
 
 $(emailInput).focus(function(){
     $(this).css("border-bottom","1px rgb(62, 139, 255) solid");
