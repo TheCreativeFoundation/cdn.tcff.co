@@ -58,10 +58,10 @@ body {
     width: 100%;
 }
 
-.middle {
+/*.middle {
     display: table-cell;
     vertical-align: middle;
-}
+}*/
 
 #application {
     margin: 0 auto;

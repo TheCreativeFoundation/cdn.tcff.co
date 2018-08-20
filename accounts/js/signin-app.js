@@ -8,7 +8,7 @@ const colors = ["#00f0ff","#fd51ff","#ff0000","#ffb400"]
 const randomNumberOne = Math.floor(Math.random() * 4);
 const randomNumberTwo = (randomNumberOne === 3) ? randomNumberOne - 1 : randomNumberOne + 1;
 const callback = getParameterByName("callback_uri");
-// const service = getParameterByName("service");
+const service = getParameterByName("service");
 
 body.style.backgroundColor = colors[randomNumberOne];
 signinButton.style.backgroundColor = colors[randomNumberOne];
@@ -18,7 +18,7 @@ $("#createAccountLink a").attr("href","/signup?callback_uri="+callback);
 
 $("a").css("color",colors[randomNumberTwo]);
 
-// document.getElementById("service").textContent = service;
+document.getElementById("service").textContent = service;
 
 $(emailInput).focus(function(){
     $(this).css("border-bottom","1px rgb(62, 139, 255) solid");
