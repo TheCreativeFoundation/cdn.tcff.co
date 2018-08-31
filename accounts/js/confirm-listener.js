@@ -1,5 +1,6 @@
 const profileEmail = document.getElementById("profile-email");
-let callback = getParameterByName("callback_uri");
+const callback = getParameterByName("callback_uri");
+const service = getParameterByName("service");
 
 firebase.auth().onAuthStateChanged(function (tcfUser) {
     if (tcfUser) {

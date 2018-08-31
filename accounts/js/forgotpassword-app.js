@@ -2,13 +2,14 @@ const colors = ["#00f0ff","#fd51ff","#ff0000","#ffb400"];
 const randomNumberOne = Math.floor(Math.random() * 4);
 const randomNumberTwo = (randomNumberOne === 3) ? randomNumberOne - 1 : randomNumberOne + 1;
 const callback = getParameterByName("callback_uri");
+const service = getParameterByName("service");
 const emailInput = document.getElementById("email-input");
 
 $("body").css("background-color",colors[randomNumberOne]);
 $(".btn").css("background-color",colors[randomNumberOne]);
 
 $("a").css("color",colors[randomNumberTwo]);
-$("#rememberPasswordLink").attr("href","/signin?callback_uri="+callback);
+$("#rememberPasswordLink").attr("href","/signin?callback_uri="+callback+"&service="+service);
 
 $("#email-input").focus(function(){
     $(this).css("border-bottom","1px rgb(62, 139, 255) solid");
@@ -39,7 +40,7 @@ $("#confirm-btn").click(function(){
         resetButton();
     } else {
         const state = {
-            url: "http://accounts.tcff.co/signin?callback="+callback,
+            url: "http://accounts.tcff.co/signin?callback="+callback+"&service="+service,
             handleCodeInApp: false
         }
         firebase.auth().sendPasswordResetEmail(email, state).then(function() {

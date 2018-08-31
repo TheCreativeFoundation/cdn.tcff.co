@@ -11,6 +11,7 @@ const colors = ["#00f0ff","#fd51ff","#ff0000","#ffb400"];
 const randomNumberOne = Math.floor(Math.random() * 4);
 const randomNumberTwo = (randomNumberOne === 3) ? randomNumberOne - 1 : randomNumberOne + 1;
 const callback = getParameterByName("callback_uri");
+const service = getParameterByName("service");
 
 body.style.backgroundColor = colors[randomNumberOne];
 signupButton.style.backgroundColor = colors[randomNumberOne];
@@ -18,7 +19,7 @@ signupButton.style.backgroundColor = colors[randomNumberOne];
 const db = firebase.firestore();
 
 $("#haveAccountLink a").css("color",colors[randomNumberTwo]);
-$("#haveAccountLink a").attr("href","/signin?callback_uri="+callback);
+$("#haveAccountLink a").attr("href","/signin?callback_uri="+callback+"&callback="+callback);
 
 $(emailInput).focus(function(){
     $("#email-label").css("color","rgb(62, 139, 255)");
@@ -176,7 +177,7 @@ $(signupButton).click(function() {
                                     photoURL: "https://cdn.tcff.co/jojo-mature.png"
                                 }).then(function(){
                                     const state = {
-                                        url: "https://accounts.tcff.co/signin/confirm?callback_uri="+callback,
+                                        url: "https://accounts.tcff.co/signin/confirm?callback_uri="+callback+"&service="+service,
                                         handleCodeInApp: false
                                     };
                                     console.log(state);

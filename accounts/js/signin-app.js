@@ -67,7 +67,7 @@ $(signinButton).click(function(){
         console.log("auth var made");
         auth.signInWithEmailAndPassword(email, pass).then(function(){
             console.log("signin was successfull");
-            window.location.href = "/signin/confirm?callback_uri="+callback;
+            window.location.href = "/signin/confirm?callback_uri="+callback+"&service="+service;
         }).catch(function(error){
             console.log(error.message);
             if (error.code === "auth/user-not-found"){
