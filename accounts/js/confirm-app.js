@@ -26,7 +26,7 @@ $("#yes-btn").click(() => {
             type: 'POST',
             url: '/api/createtoken',
             contentType: 'application/json',
-            data: JSON.stringify({token: token}),
+            data: JSON.stringify({token: token, service:service}),
             success: (data) => {
                 console.log(data.message);
                 if (data.statusCode === 202) {
@@ -35,7 +35,7 @@ $("#yes-btn").click(() => {
                         type: 'POST',
                         url: '/api/email/onconfirm',
                         contentType: 'application/json',
-                        data: JSON.stringify({token:token, service:service}),
+                        data: JSON.stringify({token:token}),
                         success: (data2) => {
                             console.log(data2.message);
                             if (data2.statusCode === 202) {
