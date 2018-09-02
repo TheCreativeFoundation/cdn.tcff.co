@@ -27,7 +27,7 @@ $("#yes-btn").click(() => {
             type: 'POST',
             url: '/api/createtoken',
             contentType: 'application/json',
-            data: JSON.stringify({token: token, service:service}),
+            data: JSON.stringify({token: token, service: service}),
             success: (data) => {
                 console.log(data.message);
                 if (data.statusCode === 202) {
@@ -42,11 +42,13 @@ $("#yes-btn").click(() => {
                             if (data2.statusCode === 202) {
                                 window.location.href = callback+"?token="+customToken;
                             } else {
+                                console.log(data2.message);
                                 window.location.href = "/error";
                             }
                         } 
                     });
                 } else {
+                    console.log(data.message);
                     window.location.href = "/error";
                 }
             }
