@@ -20,6 +20,7 @@ $("#no-btn").click(function(){
 });
 
 $("#yes-btn").click(() => {
+    console.log(service);
     firebase.auth().currentUser.getIdToken(true).then((token) => {
         console.log("token retrieved");
         $.ajax({
