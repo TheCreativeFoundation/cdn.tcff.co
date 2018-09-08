@@ -62,30 +62,6 @@ $(signinButton).click(function(){
         resetButton();
     }
     else {
-        console.log("all fields have inputs");
-        const auth = firebase.auth();
-        console.log("auth var made");
-        auth.signInWithEmailAndPassword(email, pass).then(function(){
-            console.log("signin was successfull");
-            window.location.href = "/signin/confirm?callback_uri="+callback+"&service="+service;
-        }).catch(function(error){
-            console.log(error.message);
-            if (error.code === "auth/user-not-found"){
-                emailLabel.textContent = "Couldn't find your TCF Account";
-                $(emailLabel).css("color","#FF7676");
-                $(emailInput).css("border-bottom","1px #FF7676 solid");
-            } else if (error.code === "auth/wrong-password"){
-                passLabel.textContent = "Your password was incorrect";
-                $(passLabel).css("color","#FF7676");
-                $(passInput).css("border-bottom","1px #FF7676 solid");
-                $("button").css("opacity","1");
-            } else if (error.code === "auth/invalid-email"){
-                emailLabel.textContent = "Invalid email";
-                $(emailLabel).css("color","#FF7676");
-                $(emailInput).css("border-bottom","1px #FF7676 solid");
-                $("button").css("opacity","1");
-            }
-            resetButton();
-        });
+        // sign in the user
     }
 });
