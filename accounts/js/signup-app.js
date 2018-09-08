@@ -83,16 +83,6 @@ function showError() {
     $("#error-header").show();
 }
 
-function deleteUser() {
-    firebase.auth().currentUser.delete().then(function () {
-        console.log("user deleted");
-        showError();
-    }).catch(function (error) {
-        console.log("could not delete user");
-        window.location.href = "/error";
-    });
-}
-
 $(signupButton).click(function () {
     const pass = passInput.value;
     console.log(pass);
