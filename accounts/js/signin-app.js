@@ -62,6 +62,11 @@ $(signinButton).click(function(){
         resetButton();
     }
     else {
-        // sign in the user
+        webAuth.redirect.loginWithCredentials({
+            connection: 'Username-Password-Authentication',
+            username: ,
+            password: 'testpass',
+            scope: 'openid'
+        });
     }
 });
