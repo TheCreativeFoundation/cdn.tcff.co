@@ -14,8 +14,6 @@ const service = getParameterByName("service");
 body.style.backgroundColor = colors[randomNumberOne];
 signupButton.style.backgroundColor = colors[randomNumberOne];
 
-const db = firebase.firestore();
-
 $("#haveAccountLink a").css("color", colors[randomNumberTwo]);
 $("#haveAccountLink a").attr("href", "/signin?callback_uri=" + callback + "&callback=" + callback);
 
