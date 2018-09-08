@@ -119,7 +119,24 @@ $(signupButton).click(function () {
     } else {
         if (pass.length >= 8) {
             if (document.getElementById("termsOfService-input").checked) {
-                // signup the user
+                $.ajax({
+                    async: true,
+                    crossDomain: true,
+                    url: "https://tcff.auth0.com/dbconnections/signup",
+                    method: "POST",
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        client_id: CLIENT_ID,
+                        email: email,
+                        password: pass,
+                        username: username,
+                        connection: 'Username-Password-Authentication',
+                        user_metadata: {
+                            firstName: firstName,
+                            lastName: lastName,
+                        }
+                    })
+                });
             } else {
                 $("#termsOfService-label").css("color", "#FF7676");
                 $("#termsOfService-label a").css("color", "#FF7676");
