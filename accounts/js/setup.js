@@ -1,14 +1,3 @@
-const config = {
-    apiKey: "AIzaSyClVwGc5lhfOxCX1q514chFf2QjFyxXr90",
-    authDomain: "tcff-accounts.firebaseapp.com",
-    databaseURL: "https://tcff-accounts.firebaseio.com",
-    projectId: "tcff-accounts",
-    storageBucket: "tcff-accounts.appspot.com",
-    messagingSenderId: "371281398124"
-};
-
-firebase.initializeApp(config);
-
 const getParameterByName = (name, url) => {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, '\\$&');
