@@ -135,7 +135,27 @@ $(signupButton).click(function () {
                             firstName: firstName,
                             lastName: lastName,
                         }
-                    })
+                    }),
+                    success: (data) => {
+                        if (data.statusCode === 404) {
+                            if (data.code === "invalid_password") {
+
+                            } else if (data.code === "password_dictionary_error") {
+
+                            } else if (data.code === "user_exists") {
+
+                            } else if (data.code === "username_exists") {
+
+                            } else if (data.code === "password_no_user_info_error") {
+
+                            } else {
+
+                            }
+                        } else {
+                            
+                        }
+                    },
+                    error: () => {}
                 });
             } else {
                 $("#termsOfService-label").css("color", "#FF7676");
