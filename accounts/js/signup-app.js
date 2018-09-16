@@ -139,23 +139,29 @@ $(signupButton).click(function () {
                     success: (data) => {
                         if (data.statusCode === 404) {
                             if (data.code === "invalid_password") {
-
+                                $('#pass-label').text("Password doesn't follow requirements");
+                                $("#pass-label").css("color", "#FF7676");
                             } else if (data.code === "password_dictionary_error") {
-
+                                $('#pass-label').text("Your password is too common");
+                                $("#pass-label").css("color", "#FF7676");
                             } else if (data.code === "user_exists") {
-
+                                $('#email-label').text("User with this email already exists");
+                                $("#email-label").css("color", "#FF7676");
                             } else if (data.code === "username_exists") {
-
+                                $('#username-label').text("Username is already taken");
+                                $("#username-label").css("color", "#FF7676");
                             } else if (data.code === "password_no_user_info_error") {
-
-                            } else {
+                                $('#pass-label').text("Your password includes your information");
+                                $("#pass-label").css("color", "#FF7676");
 
                             }
                         } else {
-                            
+                            showSuccess();
                         }
                     },
-                    error: () => {}
+                    error: () => {
+                        showError();
+                    }
                 });
             } else {
                 $("#termsOfService-label").css("color", "#FF7676");
