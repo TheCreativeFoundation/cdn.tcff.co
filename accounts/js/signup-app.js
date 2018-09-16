@@ -141,7 +141,7 @@ $(signupButton).click(function () {
                         showSuccess();
                     },
                     error: (error) => {
-                        const data = JSON.parse(data.responseText);
+                        const data = JSON.parse(error.responseText);
                         if (data.statusCode === 404) {
                             if (data.code === "invalid_password") {
                                 $('#pass-label').text("Password doesn't follow requirements");
