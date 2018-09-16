@@ -160,7 +160,7 @@ $(signupButton).click(function () {
                             showSuccess();
                         }
                     },
-                    error: (error) => {
+                    error: (data) => {
                         const statusCode = JSON.parse(data.responseText).statusCode;
                         if (data.statusCode === 404) {
                             if (data.code === "invalid_password") {
