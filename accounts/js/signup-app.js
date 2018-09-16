@@ -160,7 +160,8 @@ $(signupButton).click(function () {
                             showSuccess();
                         }
                     },
-                    error: () => {
+                    error: (data) => {
+                        console.log(data);
                         console.log("error");
                         showError();
                     }
