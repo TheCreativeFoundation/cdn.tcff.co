@@ -144,6 +144,7 @@ $(signupButton).click(function () {
                         const data = JSON.parse(error.responseText);
                         console.log(data);
                         if (data.statusCode === 404) {
+                            console.log(404);
                             if (data.code === "invalid_password") {
                                 $('#pass-label').text("Password doesn't follow requirements");
                                 $("#pass-label").css("color", "#FF7676");
@@ -151,6 +152,7 @@ $(signupButton).click(function () {
                                 $('#pass-label').text("Your password is too common");
                                 $("#pass-label").css("color", "#FF7676");
                             } else if (data.code === "user_exists") {
+                                console.log("user_exists");
                                 $('#email-label').text("User with this email already exists");
                                 $("#email-label").css("color", "#FF7676");
                             } else if (data.code === "username_exists") {
