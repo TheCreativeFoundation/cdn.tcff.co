@@ -161,7 +161,7 @@ $(signupButton).click(function () {
                         }
                     },
                     error: (data) => {
-                        console.log(data);
+                        console.log(JSON.parse(data.responseTexxt).statusCode);
                         console.log("error");
                         showError();
                     }
