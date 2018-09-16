@@ -143,25 +143,34 @@ $(signupButton).click(function () {
                     error: (error) => {
                         const data = JSON.parse(error.responseText);
                         if (data.code === "invalid_password") {
+                            $(passInput).css("border-bottom", "1px #FF7676 solid");
                             $('#pass-label').text("Password doesn't follow requirements");
                             $("#pass-label").css("color", "#FF7676");
-                        } else if (data.code === "password_dictionary_error") {
+                        }
+                        else if (data.code === "password_dictionary_error") {
+                            $(passInput).css("border-bottom", "1px #FF7676 solid");
                             $('#pass-label').text("Your password is too common");
                             $("#pass-label").css("color", "#FF7676");
-                        } else if (data.code === "user_exists") {
-                            console.log("user_exists");
+                        }
+                        else if (data.code === "user_exists") {
+                            $(emailInput).css("border-bottom", "1px #FF7676 solid");;
                             $('#email-label').text("User with this email already exists");
                             $("#email-label").css("color", "#FF7676");
-                        } else if (data.code === "username_exists") {
+                        }
+                        else if (data.code === "username_exists") {
+                            $(usernameLabel).css("border-bottom", "1px #FF7676 solid");
                             $('#username-label').text("Username is already taken");
                             $("#username-label").css("color", "#FF7676");
-                        } else if (data.code === "password_no_user_info_error") {
+                        }
+                        else if (data.code === "password_no_user_info_error") {
+                            $(passInput).css("border-bottom", "1px #FF7676 solid");
                             $('#pass-label').text("Your password includes your information");
                             $("#pass-label").css("color", "#FF7676");
                         }
                         else {
                             showError();
                         }
+                        resetButton();
                     }
                 });
             } else {
