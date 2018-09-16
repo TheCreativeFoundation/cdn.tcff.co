@@ -161,6 +161,7 @@ $(signupButton).click(function () {
                         }
                     },
                     error: () => {
+                        console.log("error");
                         showError();
                     }
                 });
