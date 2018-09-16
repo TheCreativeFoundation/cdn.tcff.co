@@ -142,6 +142,7 @@ $(signupButton).click(function () {
                     },
                     error: (error) => {
                         const data = JSON.parse(error.responseText);
+                        console.log(data);
                         if (data.statusCode === 404) {
                             if (data.code === "invalid_password") {
                                 $('#pass-label').text("Password doesn't follow requirements");
@@ -158,7 +159,6 @@ $(signupButton).click(function () {
                             } else if (data.code === "password_no_user_info_error") {
                                 $('#pass-label').text("Your password includes your information");
                                 $("#pass-label").css("color", "#FF7676");
-
                             }
                             else {
                                 showError();
