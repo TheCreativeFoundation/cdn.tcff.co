@@ -62,11 +62,16 @@ $(signinButton).click(function(){
         resetButton();
     }
     else {
-        webAuth.redirect.loginWithCredentials({
-            connection: 'Username-Password-Authentication',
-            username: ,
-            password: 'testpass',
-            scope: 'openid'
+        $.ajax({
+            async: true,
+            crossDomain: true,
+            url: "https://tcff.auth0.com/authorize",
+            method: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify({}),
+            success: (data) => {},
+            error: (error) => {}
         });
+            
     }
 });

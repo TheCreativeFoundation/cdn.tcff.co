@@ -119,59 +119,20 @@ $(signupButton).click(function () {
     } else {
         if (pass.length >= 8) {
             if (document.getElementById("termsOfService-input").checked) {
-                $.ajax({
-                    async: true,
-                    crossDomain: true,
-                    url: "https://tcff.auth0.com/dbconnections/signup",
-                    method: "POST",
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                        client_id: CLIENT_ID,
-                        email: email,
-                        password: pass,
-                        username: username,
-                        connection: 'Username-Password-Authentication',
-                        user_metadata: {
-                            firstName: firstName,
-                            lastName: lastName,
-                        }
-                    }),
-                    success: (data) => {
-                        console.log(data);
-                        showSuccess();
-                    },
-                    error: (error) => {
-                        const data = JSON.parse(error.responseText);
-                        if (data.code === "invalid_password") {
-                            $(passInput).css("border-bottom", "1px #FF7676 solid");
-                            $('#pass-label').text("Password doesn't follow requirements");
-                            $("#pass-label").css("color", "#FF7676");
-                        }
-                        else if (data.code === "password_dictionary_error") {
-                            $(passInput).css("border-bottom", "1px #FF7676 solid");
-                            $('#pass-label').text("Your password is too common");
-                            $("#pass-label").css("color", "#FF7676");
-                        }
-                        else if (data.code === "user_exists") {
-                            $(emailInput).css("border-bottom", "1px #FF7676 solid");;
-                            $('#email-label').text("User with this email already exists");
-                            $("#email-label").css("color", "#FF7676");
-                        }
-                        else if (data.code === "username_exists") {
-                            $(usernameLabel).css("border-bottom", "1px #FF7676 solid");
-                            $('#username-label').text("Username is already taken");
-                            $("#username-label").css("color", "#FF7676");
-                        }
-                        else if (data.code === "password_no_user_info_error") {
-                            $(passInput).css("border-bottom", "1px #FF7676 solid");
-                            $('#pass-label').text("Your password includes your information");
-                            $("#pass-label").css("color", "#FF7676");
-                        }
-                        else {
-                            showError();
-                        }
-                        resetButton();
-                    }
+                const webAuth = new auth0.WebAuth({
+                    domain: 'tcff.auth0.com',
+                    clientID: 'o314Vjy5gyCCfHnA1ieVbxwXZzTxwAtZ'
+                });
+
+                webAuth.signup({ 
+                    connection: 'Username-Password-Authentication', 
+                    email: email, 
+                    password: pass,
+                    username: username,
+                    user_metadata: {firstName: firstName, lastName: lastName}
+                }, function (err) { 
+                    if (err) return alert('Something went wrong: ' + err.message); 
+                      return alert('success signup without login!') 
                 });
             } else {
                 $("#termsOfService-label").css("color", "#FF7676");
