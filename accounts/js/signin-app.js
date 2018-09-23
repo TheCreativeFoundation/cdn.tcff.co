@@ -44,7 +44,17 @@ $(passInput).focusout(function(){
     $(passLabel).css("color","black");
 })
 
-$(signinButton).click(function(){
+const webAuth = new auth0.WebAuth({
+    domain: 'tcff.auth0.com',
+    clientID: 'o314Vjy5gyCCfHnA1ieVbxwXZzTxwAtZ',
+    responseType: 'token id_token',
+    scope: 'openid'
+});
+
+webAuth.crossOriginVerification();
+
+$(signinButton).click(function(event){
+    event.preventDefault();
     console.log("signin-button clicked");
     const email = emailInput.value;
     const pass = passInput.value;
@@ -61,25 +71,17 @@ $(signinButton).click(function(){
         }
         resetButton();
     }
-    else {
-        const webAuth = new auth0.WebAuth({
-            domain: 'tcff.auth0.com',
-            clientID: 'o314Vjy5gyCCfHnA1ieVbxwXZzTxwAtZ',
-            responseType: 'token id_token',
-            scope: 'openid'
-        });
-
-        webAuth.crossOriginVerification();
-        
-        webAuth.login({
-            realm: 'Username-Password-Authentication',
-            username: email,
-            password: pass
-        }, function(err) {
-            if (err) {
-                console.log(err.code);
-                alert(err.message);
-            }
-        });  
+    else {        
+        // webAuth.login({
+        //     realm: 'Username-Password-Authentication',
+        //     username: email,
+        //     password: pass
+        // }, function(err) {
+        //     if (err) {
+        //         console.log(err.code);
+        //         alert(err.message);
+        //     }
+        // });  
+        webAuth.authorize();
     }
 });
