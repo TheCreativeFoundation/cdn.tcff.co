@@ -62,6 +62,12 @@ $(signinButton).click(function(){
         resetButton();
     }
     else {
+        const webAuth = new auth0.WebAuth({
+            domain: 'tcff.auth0.com',
+            clientID: 'o314Vjy5gyCCfHnA1ieVbxwXZzTxwAtZ'
+            responseType: 'token id_token',
+            scope: 'openid'
+        });
         webAuth.login({
             realm: 'Username-Password-Authentication',
             username: email,

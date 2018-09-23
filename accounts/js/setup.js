@@ -1,9 +1,3 @@
-const webAuth = new auth0.WebAuth({
-    domain: 'tcff.auth0.com',
-    clientID: 'o314Vjy5gyCCfHnA1ieVbxwXZzTxwAtZ',
-    redirectUri: 'https://accounts.tcff.co/signin/confirm'
-});
-
 const CLIENT_ID = 'o314Vjy5gyCCfHnA1ieVbxwXZzTxwAtZ';
 
 const getParameterByName = (name, url) => {
