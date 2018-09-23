@@ -148,7 +148,7 @@ $(signupButton).click(function () {
                             $("#email-label").css("color", "#FF7676");
                         }
                         else if (err.code === "username_exists") {
-                            $(usernameLabel).css("border-bottom", "1px #FF7676 solid");
+                            $(usernameInput).css("border-bottom", "1px #FF7676 solid");
                             $('#username-label').text("Username is already taken");
                             $("#username-label").css("color", "#FF7676");
                         }
