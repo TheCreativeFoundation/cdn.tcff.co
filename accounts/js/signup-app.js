@@ -131,8 +131,38 @@ $(signupButton).click(function () {
                     username: username,
                     user_metadata: {firstName: firstName, lastName: lastName}
                 }, function (err) { 
-                    if (err) return alert('Something went wrong: ' + err.message); 
-                      return alert('success signup without login!') 
+                    if (err) {
+                        if (err.code === "invalid_password") {
+                            $(passInput).css("border-bottom", "1px #FF7676 solid");
+                            $('#pass-label').text("Password doesn't follow requirements");
+                            $("#pass-label").css("color", "#FF7676");
+                        }
+                        else if (err.code === "password_dictionary_error") {
+                            $(passInput).css("border-bottom", "1px #FF7676 solid");
+                            $('#pass-label').text("Your password is too common");
+                            $("#pass-label").css("color", "#FF7676");
+                        }
+                        else if (err.code === "user_exists") {
+                            $(emailInput).css("border-bottom", "1px #FF7676 solid");;
+                            $('#email-label').text("User with this email already exists");
+                            $("#email-label").css("color", "#FF7676");
+                        }
+                        else if (err.code === "username_exists") {
+                            $(usernameLabel).css("border-bottom", "1px #FF7676 solid");
+                            $('#username-label').text("Username is already taken");
+                            $("#username-label").css("color", "#FF7676");
+                        }
+                        else if (err.code === "password_no_user_info_error") {
+                            $(passInput).css("border-bottom", "1px #FF7676 solid");
+                            $('#pass-label').text("Your password includes your information");
+                            $("#pass-label").css("color", "#FF7676");
+                        }
+                        else {
+                            showError();
+                        }
+                        resetButton();
+                    } 
+                    showSuccess(); 
                 });
             } else {
                 $("#termsOfService-label").css("color", "#FF7676");
