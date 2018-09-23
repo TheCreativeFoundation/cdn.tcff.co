@@ -73,7 +73,10 @@ $(signinButton).click(function(){
             username: email,
             password: pass
         }, function(err) {
-            if (err) alert(err);
+            if (err) {
+                console.log(err.code);
+                alert(err.message);
+            }
         });  
     }
 });
