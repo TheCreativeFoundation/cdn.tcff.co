@@ -64,7 +64,7 @@ $(signinButton).click(function(){
     else {
         const webAuth = new auth0.WebAuth({
             domain: 'tcff.auth0.com',
-            clientID: 'o314Vjy5gyCCfHnA1ieVbxwXZzTxwAtZ'
+            clientID: 'o314Vjy5gyCCfHnA1ieVbxwXZzTxwAtZ',
             responseType: 'token id_token',
             scope: 'openid'
         });
