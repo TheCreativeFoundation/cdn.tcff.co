@@ -51,7 +51,7 @@ const webAuth = new auth0.WebAuth({
     scope: 'openid'
 });
 
-webAuth.crossOriginVerification();
+// webAuth.crossOriginVerification();
 
 $(signinButton).click(function(event){
     event.preventDefault();
