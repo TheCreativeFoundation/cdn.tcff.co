@@ -62,16 +62,12 @@ $(signinButton).click(function(){
         resetButton();
     }
     else {
-        $.ajax({
-            async: true,
-            crossDomain: true,
-            url: "https://tcff.auth0.com/authorize",
-            method: "POST",
-            contentType: 'application/json',
-            data: JSON.stringify({}),
-            success: (data) => {},
-            error: (error) => {}
-        });
-            
+        webAuth.login({
+            realm: 'Username-Password-Authentication',
+            username: email,
+            password: pass
+        }, function(err) {
+            if (err) alert(err);
+        });  
     }
 });
