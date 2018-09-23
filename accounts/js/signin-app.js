@@ -68,6 +68,9 @@ $(signinButton).click(function(){
             responseType: 'token id_token',
             scope: 'openid'
         });
+
+        webAuth.crossOriginVerification();
+        
         webAuth.login({
             realm: 'Username-Password-Authentication',
             username: email,
