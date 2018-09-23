@@ -161,8 +161,9 @@ $(signupButton).click(function () {
                             showError();
                         }
                         resetButton();
+                    }  else {
+                        showSuccess();
                     } 
-                    showSuccess(); 
                 });
             } else {
                 $("#termsOfService-label").css("color", "#FF7676");
