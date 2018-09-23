@@ -72,16 +72,15 @@ $(signinButton).click(function(event){
         resetButton();
     }
     else {        
-        // webAuth.login({
-        //     realm: 'Username-Password-Authentication',
-        //     username: email,
-        //     password: pass
-        // }, function(err) {
-        //     if (err) {
-        //         console.log(err.code);
-        //         alert(err.message);
-        //     }
-        // });  
-        webAuth.authorize();
+        webAuth.login({
+            realm: 'Username-Password-Authentication',
+            username: email,
+            password: pass
+        }, function(err) {
+            if (err) {
+                console.log(err.code);
+                alert(err.message);
+            }
+        });
     }
 });
